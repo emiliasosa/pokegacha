@@ -8,6 +8,20 @@ let jugadas = (dinero) =>{
     return totalDeJugadas
 }
 
+let tiros = jugadas(dinero);
+
+let gacha = () => {
+    for (i = 0; i < tiros; i--) {
+        let aceptar = prompt("Deseas realizar la jugada?")
+
+        if(aceptar == "si"){
+            alert("Haz sacado un gashapon!")
+        } else {
+            alert("Puedes realizar tu tirada cuando quieras")
+        }
+    }
+}
+
 while(dinero >= 3 || dinero <= 3){
     if(dinero < 3 ){
         do{
@@ -16,24 +30,11 @@ while(dinero >= 3 || dinero <= 3){
     } 
 
     if (dinero > 3){
-        alert(`Tienes un total de ${jugadas()} jugadas`)
+        alert(`Tienes un total de ${tiros} jugadas`)
         alert(gacha())
     } else if (dinero === 3 ){
         alert("Puedes realizar una jugada")
         alert(gacha())
     }
-    break;
-}
-
-
-let gacha = (jugadas) => {
-    for (i = 0; i < jugadas; i--) {
-        let aceptar = prompt("Deseas realizar la jugada?")
-
-        if(aceptar = si){
-            alert("Haz sacado un gashapon!")
-        } else {
-            alert("Puedes realizar tu tirada cuando quieras")
-        }
-    }
+    
 }
