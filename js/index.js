@@ -10,19 +10,22 @@ let jugadas = (dinero) =>{
 
 let tiros = jugadas(dinero);
 
-let gacha = () => {
-    for (i = 0; i < tiros; i--) {
-        let aceptar = prompt("Deseas realizar la jugada?")
 
-        if(aceptar == "si"){
-            alert("Haz sacado un gashapon!")
-        } else {
-            alert("Puedes realizar tu tirada cuando quieras")
-        }
-    }
-}
 
 while(dinero >= 3 || dinero <= 3){
+
+    let gacha = () => {
+        for (i = 0; i < tiros; i--) {
+            let aceptar = prompt("Deseas realizar la jugada?")
+    
+            if(aceptar == "si"){
+                alert("Haz sacado un gashapon!")
+            } else {
+                alert("Puedes realizar tu tirada cuando quieras")
+            }
+        }
+    }
+    
     if(dinero < 3 ){
         do{
             dinero = Number(prompt("No te alcanza, debes ingresar mas dinero. Una jugada tiene el valor de 3 usd"));
