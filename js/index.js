@@ -24,12 +24,16 @@ let gacha = () => {
 
     if(aceptar == "si"){
         for (let i = 1; i <= tiros; i++) {
-            alert("Haz sacado un gashapon!")
-            
-            if(i < tiros){
-                aceptar = prompt("Deseas realizar la jugada?")
+            let total = tiros - i
+
+            if(i < tiros && aceptar == "si"){
+                aceptar = prompt(`Haz sacado un gashapon! Te quedan ${total} jugadas. Deseas realizar otra jugada?`)
+            }else if (i == tiros){
+                alert("Haz sacado un gashapon! Te quedaste sin jugadas, gracias por jugar!")
+                break;
             }else{
-                alert("Te quedaste sin jugadas")
+                alert("Puedes realizar tu tirada cuando quieras");
+                break;
             }
         }
     } else {
