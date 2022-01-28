@@ -1,10 +1,10 @@
-let dinero = parseInt(prompt("Ingrese su dinero, 1 jugada tiene el valor de 3 usd"));
+let dinero = 0;
 
-/*let dinero;
+let tiros;
 
 do{
     dinero = parseInt(prompt("Ingrese su dinero, 1 jugada tiene el valor de 3 usd"));
-}while(dinero != isNaN);*/
+}while(/\D/.test(dinero) || dinero == "" || dinero < 3 || tiros == false);
 
 let jugadas = (dinero) =>{
     let totalDeJugadas = 0;
@@ -17,20 +17,21 @@ let jugadas = (dinero) =>{
     }
 }
 
-let tiros = jugadas(dinero);
+tiros = jugadas(dinero);
+
+
 
 let gacha = () => {
     let aceptar = prompt("Deseas realizar la jugada?")
 
-    if(aceptar == "si"){
+    if(aceptar.toLowerCase() == "si"){
         for (let i = 1; i <= tiros; i++) {
             let total = tiros - i
 
-            if(i < tiros && aceptar == "si"){
+            if(i < tiros && aceptar.toLowerCase() == "si"){
                 aceptar = prompt(`Haz sacado un gashapon! Te quedan ${total} jugadas. Deseas realizar otra jugada?`)
-            }else if (i == tiros){
+            }else if (i == tiros && aceptar.toLowerCase() == "si"){
                 alert("Haz sacado un gashapon! Te quedaste sin jugadas, gracias por jugar!")
-                break;
             }else{
                 alert("Puedes realizar tu tirada cuando quieras");
                 break;
@@ -41,17 +42,10 @@ let gacha = () => {
     }
 }
 
-if(dinero < 3 /*|| tiros == false*/){
-    do{
-        dinero = Number(prompt("No te alcanza, debes ingresar mas dinero. Una jugada tiene el valor de 3 usd"));
-    } while (dinero < 3 /*|| tiros == false*/)
-} 
-
 if (tiros > 1){
     alert(`Tienes un total de ${tiros} jugadas`)
-    alert(gacha())
+    gacha()
 } else if (tiros == 1){
     alert("Puedes realizar una jugada")
-    alert(gacha())
+    gacha()
 }
-    
