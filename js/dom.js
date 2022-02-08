@@ -1,6 +1,6 @@
-document.getElementById('jugadas').innerHTML = `Tienes un total de ${totalDeJugadas} jugadas`;
+let contenido = document.getElementById('contendor')
 
-document.getElementById('premio').innerHTML = `Ganaste: ${allObjetc.probabilidad}`
-
-document.getElementById('skip').innerHTML = `${saltear}`
+contenido.innerHTML = `<h3>Tienes un total de ${totalDeJugadas} jugadas</h3>
+                    <h2>Ganaste: ${allObjetc.probabilidad}</h2> 
+                    <p>${saltear}</p>`
 
