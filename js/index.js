@@ -34,12 +34,3 @@ do{
 
 gacha()
 
-
-
-
-
-/*if (totalDeJugadas > 1){
-    alert(`Tienes un total de ${totalDeJugadas} jugadas`)
-} else if (totalDeJugadas == 1){
-    alert("Puedes realizar una jugada")
-}*/
