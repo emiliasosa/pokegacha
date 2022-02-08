@@ -8,18 +8,21 @@ let gacha = () => {
             }else if (i == totalDeJugadas && aceptar.toLowerCase() == "si" ){
                 alert("Haz sacado un gashapon! Te quedaste sin jugadas, gracias por jugar!")
             }else {
-                alert("Puedes realizar tu tirada cuando quieras");
+                saltear = `Puedes realizar tu tirada cuando quieras,aun tienes ${i}`;
                 break;
             }
         }
     } else {
-        alert("Puedes realizar tu tirada cuando quieras");
+        alert(`Vuelve en otra ocasion, aun tienes ${totalDeJugadas}`);
     }
 }
 
 let dinero = 0;
 let totalDeJugadas = 0;
 let cortarDo = false;
+let saltear = "";
+
+console.log(saltear)
 
 do{
     dinero = parseInt(prompt("Ingrese su dinero, 1 jugada tiene el valor de 3 usd"));
