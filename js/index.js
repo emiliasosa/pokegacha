@@ -1,6 +1,8 @@
 let gacha = () => {
     for (let i = 1; i <= totalDeJugadas; i++) {
         if(i < totalDeJugadas){
+            // asi lo quiero poner
+            //document.getElementById('premios').innerHTML = `${allObjetc.probabilidad()} Te quedan ${totalDeJugadas - i} jugadas`);
             alert(`Haz sacado un gashapon! Te quedan ${totalDeJugadas - i} jugadas`);
             break;
         }else if (i == totalDeJugadas){
