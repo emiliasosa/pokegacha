@@ -1,32 +1,44 @@
-let gacha = () => {
-    for (let i = 1; i <= totalDeJugadas; i++) {
-        if(i < totalDeJugadas){
-            // asi lo quiero poner
-            //document.getElementById('premios').innerHTML = `${allObjetc.probabilidad()} Te quedan ${totalDeJugadas - i} jugadas`);
-            alert(`Haz sacado un gashapon! Te quedan ${totalDeJugadas - i} jugadas`);
-            break;
-        }else if (i == totalDeJugadas){
-            document.getElementById('premios').innerHTML = 'Haz sacado un gashapon! Te quedaste sin jugadas, gracias por jugar';
-        }
-    }
-}
-
 let solicitarPago = (e) =>{
     e.preventDefault();
     let formulario = e.target
     
     dinero = parseInt(formulario.children[0].value);
-
+    
     if(dinero % 3 == 0 && dinero != 0){
-        totalDeJugadas = dinero / 3;
-        document.getElementById('cantidad').innerHTML = `Tienes un total de ${totalDeJugadas} jugadas`;
+        jugadasInicial = dinero / 3; 
+        totalDeJugadas += jugadasInicial
+        localStorage.setItem('Jugadas', totalDeJugadas)
+        acumulador = JSON.parse(localStorage.getItem('Jugadas'))
+        document.getElementById('cantidad').innerHTML = `Tienes un total de ${acumulador} jugadas`;
     }else{
-        document.getElementById('cantidad').innerHTML = 'Dinero insuficiente';
+        document.getElementById('cantidad').innerHTML = 'Dinero insuficiente, ingrese mas dinero';
     }
 }
 
+let gacha = (e) => {
+    e.preventDefault();
+    if(1 <= acumulador) {
+        mostrarPremio()
+        acumulador -=1 
+        document.getElementById('cantidad').innerHTML = `Tienes un total de ${acumulador} jugadas`;
+        localStorage.setItem('Jugadas', acumulador)
+        if(acumulador === 0){
+            localStorage.removeItem('Jugadas');
+        }
+    }else{
+        document.getElementById('premios').innerHTML = `No ingresaste dinero para realizar una jugada`;
+    }
+}
 
-let dinero = 0;
+let mostrarPremio = () =>{ 
+    allPrizes.forEach((e) => { 
+        document.getElementById('premios').innerHTML = `${e.probabilidad()}`
+    })
+};
+
+
 let totalDeJugadas = 0;
-let cortarDo = false;
-let saltear = "";
+let jugadasInicial = 0;
+let dinero = 0;
+let acumulador = 0;
+
