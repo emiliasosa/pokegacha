@@ -34,9 +34,6 @@ let mostrarPremio = () =>{
 };
 
 
-
-
-
 let totalDeJugadas = 0;
 let jugadasInicial = 0;
 let dinero = 0;
