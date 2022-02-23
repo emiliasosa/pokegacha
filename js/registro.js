@@ -55,7 +55,9 @@ let logear = (e)=>{
     if(nombre != user.nombre){
         document.getElementById('error').innerHTML= `<p class='mensajeerror'>¡Nombre incorrecto!</p>`
     } else if (nombre == user.nombre && password == user.password) {
-        log = true
+        log = nombre
+        console.log(nombre)
+        console.log(log)
         document.getElementById('error').innerHTML= `<p class='mensaje'>Ingresando...</p>`
         setTimeout(() => { window.location='juegos.html'}, 3000)
     } else{
@@ -64,8 +66,9 @@ let logear = (e)=>{
 }
 
 let option = () =>{
-    log === true ? window.location='buscador.html' : window.location='registrar.html'
+    log != null ? window.location='juegos.html' : window.location='registrar.html'
 }
 
 let log = "";
+
 
