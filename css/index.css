@@ -107,13 +107,13 @@ input:focus{
     margin-bottom: 20px;
 }
 
-.submit:hover, button:hover{
+.submit:hover, .btnextra:hover{
     background-color: #584183;
     letter-spacing: 22px;
     transition: 1.5s;
 }
 
-button{
+.btnextra{
     border-radius: 10px;
     background-color: #34a1a1;
     border: none;
@@ -156,4 +156,10 @@ button{
     animation: ani2 1s ease-out 0.75s forwards;
 }
 
+
+.juegosmain{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
 
