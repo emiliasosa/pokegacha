@@ -163,3 +163,7 @@ input:focus{
     text-align: center;
 }
 
+.saludoPersonal{
+    text-align: center;
+    font-size: 45px;
+}
