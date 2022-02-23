@@ -26,9 +26,11 @@ class Prize{
                 return num;
         }
 
-        let idItem = allPrizes.find((item) => item.id == idVer())
+        let ver = idVer()
+        let idItem = allPrizes.find((item) => item.id == ver)
 
         return `Felicidades, te ganaste ${idItem.articulo} ${idItem.nombre} !! `
+        
     }
 }
 
@@ -54,4 +56,4 @@ allPrizes.push(gasha1, gasha2, gasha3, gasha4, gasha5, gasha6, gasha7, gasha8, g
 
 //const categoriasFiltradas = allObjetc.filter((item) => item.categoria.includes(buscador));
 
-let premios = JSON.stringify(localStorage.setItem('Premios', mostrarPremio()))
+//let premios = JSON.parse(localStorage.setItem('Premios', mostrarPremio()))
