@@ -7,7 +7,7 @@ let solicitarPago = (e) =>{
     if(dinero % 3 == 0 && dinero != 0){
         jugadasInicial = dinero / 3; 
         totalDeJugadas += jugadasInicial
-        localStorage.setItem('Jugadas', totalDeJugadas)
+        JSON.stringify(localStorage.setItem('Jugadas', totalDeJugadas))
         acumulador = JSON.parse(localStorage.getItem('Jugadas'))
         document.getElementById('cantidad').innerHTML = `Tienes un total de ${acumulador} jugadas`;
     }else{
@@ -19,15 +19,12 @@ let gacha = (e) => {
     e.preventDefault();
     if(1 <= acumulador) {
         mostrarPremio()
-        acumulador -=1 
+        acumulador = acumulador -1
         document.getElementById('cantidad').innerHTML = `Tienes un total de ${acumulador} jugadas`;
-        localStorage.setItem('Jugadas', acumulador)
-        if(acumulador === 0){
-            localStorage.removeItem('Jugadas');
-        }
     }else{
         document.getElementById('premios').innerHTML = `No ingresaste dinero para realizar una jugada`;
     }
+    JSON.stringify(localStorage.setItem('Jugadas', acumulador))
 }
 
 let mostrarPremio = () =>{ 
@@ -37,8 +34,10 @@ let mostrarPremio = () =>{
 };
 
 
+
+
+
 let totalDeJugadas = 0;
 let jugadasInicial = 0;
 let dinero = 0;
 let acumulador = 0;
-
