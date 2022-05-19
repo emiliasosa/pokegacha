@@ -1,72 +1,331 @@
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     margin: 0;
     padding: 0;
-    font-family: 'Dosis', sans-serif;
+    font-family: 'VT323';
     background-image: linear-gradient(to left bottom, #e5e2d9, #d5ddc5, #b7dabb, #8cd7c0, #4fd3d3);
     display: flex;
     flex-direction: column;
     height:100vh;
+    
 }
 
-nav img{
+/*main{
+    background-image: url("../img/bck.png");
+    background-repeat: repeat-y;
+    background-size: 200px;
+}*/
+
+
+.header{
+    background-color: #34a1a1;
+    height: 2.5rem;
+    padding-bottom: .3rem;
+    position: fixed;
+    width: 100vw;
+    z-index: 10;
+
+}
+
+#nav__container{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem
+}
+
+.nav__txt{
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    font-weight: 0;
+    color: rgb(249, 226, 51);
+}
+
+.nav__txt:hover{
+    color: #8cd7c0;
+    border-top: .8rem solid #8cd7c0;
+    border-bottom: .8rem solid #8cd7c0;
+}
+
+.nav__txt-ttl{
+    color: #fff;
+    font-size: 1.7rem;
+    font-family: 'Major Mono Display', monospace;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-weight: 0;
+}
+
+.nav__img{
     width: 30px;
     margin-right: 30px;
-    flex: 1;
-    float: right;
+    
     margin-top: 10px;
 }
 
-.btnclass{
+.hero{
+    margin-top: 2.8rem;
+}
+
+.hero_txt_container{
     text-align: center;
+    background: url("../img/bck.png") repeat-x;
+    background-size: 7rem;
 }
 
-.btn{
-    font-size: 18px;
-    word-spacing: 15px;
-    letter-spacing: 5px;
-    border-radius: 10px;
-    height: 40px;
-    width: 300px;
-    color: #fff;
-    border: 2px solid #fff;
-    background-color: transparent;
-}
-
-.btn:hover{
-    box-shadow: -1px 0px 18px 10px rgba(79,211,211,0.75);
-}
-
-.ttl{
-    padding: 0;
+.hero_txt_container-ttl{
+    font-size: 5rem;
     margin: 0;
-    text-align: center;
-    font-size: 50px;
+    color: rgb(0, 0, 0);
+    letter-spacing: 3rem;
+    font-family: 'Major Mono Display', monospace;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgb(68, 68, 68);
+}
+
+.hero_txt_container-p{
+    font-size: 2rem;
+    margin: 0;
+    background-color: #fff;
+    color: #34a1a1;
+    letter-spacing: 1.8rem;
+    padding: 0.4rem;
+    border-bottom: 1px solid rgb(68, 68, 68);
+}
+
+.hero_video_container{
+    position: relative;
+    height: 71.8vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+}
+
+.hero_video_video{
+    height: 141vh;
+}
+
+#hero_video_texto{
+    position: absolute;
+    background-color: #000;
+    height: 71.8vh;
+    width: 100vw;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.hero_video_texto_p{
+    text-decoration: none;
     color: #fff;
-    letter-spacing: 40px;
+    font-size: 3rem;
+    letter-spacing: 1rem;
+    animation: pvideo 4s infinite;
 }
 
-.saludo{
-    font-size: 40px;
-    text-align: center;
-    color: rgb(54, 54, 54);
-    margin-top: 15vh;
+@keyframes pvideo{
+    0%{opacity: 0;}
+    10%{opacity: 1;
+        color: #fff;}
+    40%{opacity: 1;
+        color: #fff;}
+    50%{opacity: 0;
+        color: rgb(249, 226, 51);}
+    90%{opacity: 1;
+        color: rgb(249, 226, 51);}
+    100%{opacity: 0;}
 }
 
-#cen{
+
+.gacha_container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: url("../img/bck2.png") repeat;
+    background-size: 7rem;
+    height: 100vh;
+}
+
+.gacha_profesor{
+    position: relative;
+    margin-top: 2.8rem;
+}
+
+.gacha_profesor_img{
+    transform: scaleX(-1);
+    height: 85vh;
+    margin-top: 4rem;
+}
+
+.gacha_profesor_container_txt{
+    border: 0.8rem solid #34a1a1;
+    position: absolute;
+    background-color: #34a1a1;
+    width: 17vw;
+    height: 17vh;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-top: -40rem;
+    transform: translateX(14rem);
+}
+
+#gacha_profesor_txt{
+    margin: 0;
+    padding: 1rem;
+    margin: 0.2rem;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 100;
+    text-align: justify;
+    transform: translateY(-9rem);
+}
+
+@keyframes movertxt{
+    0%{transform: translateY(6rem);}
+    100%{transform: translateY(-9rem);}
+}
+
+
+.gacha_container_function{
+    background-color: rgb(249, 226, 51, .7);
+    border-radius: 25%;
+    margin: 2rem;
+    margin-top: 5rem;
+    height: 85vh;
+    width: 50vw;
+    border: 6px solid #fff;
+}
+
+.gacha_function_txt_container{
+    height: 5rem;
+}
+
+#gacha_function_money{
     display: flex;
     justify-content: center;
-}
-.user{
-    display: flex;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.9);
-    width: 500px;
-    border-radius: 10px;
-    box-shadow: 9px 10px 38px -18px rgba(0,0,0,1);
+    font-size: 1.5rem;
+    font-weight: 200;
+    color: #34a1a1;
 }
 
-p{
-    font-weight: 600;
+.gacha_function_error_container{
+    display: flex;
+    justify-content: center;
+    margin-top: -3rem;  
+}
+
+.premios_txt-error{
+    color: red;
+    font-size: 1.5rem;
+    animation: entrada 3s;
+}
+
+@keyframes entrada{
+    0%{opacity: 0;
+        font-size: 1.5rem;}
+    10%{font-size: 1.6rem;}
+    20%{font-size: 1.5rem;}
+    40%{opacity: 1;}
+}
+
+.gacha_function_img_img{
+    width: 29vw;
+    margin: 0 10rem;
+}
+
+#gacha_function_img_img-2{
+    width: 29vw;
+    margin: 0 10rem;
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+}
+.gacha_img_pikachu{
+    margin-top: 8rem;
+    margin-left: 25rem;
+    position: absolute;
+    z-index: 2;
+    width: 15vw;
+}
+
+#gacha_img_pikachu1{
+    visibility: visible;
+}
+
+#gacha_img_pikachu2{
+    visibility: hidden;
+}
+
+.premios_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 5;
+    visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.6);
+    height: 98.5vh;
+    width: 98.5vw;
+}
+
+.premios_txt{
+    font-size: 1.5rem;
+}
+
+.premios_img{
+    height: 7rem;
+    z-index: 7;
+}
+
+#premios{
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.premios_txt-nombre{
+    font-weight: 800;
+    color: #fe5900;
+}
+
+#premios_img_pkbc{
+    width: 20rem;
+    position: absolute;
+    z-index: 3;
+}
+
+@keyframes pkbc{
+    0%{width: 0rem;}
+    30%{width: 20rem;
+        transform: rotate(0deg);}
+    35%{transform: rotate(15deg);}
+    45%{transform: rotate(-15deg);}
+    55%{transform: rotate(15deg);}
+    60%{transform: rotate(-15deg);}
+    65%{transform: rotate(15deg);}
+    70%{transform: rotate(-15deg);}
+    75%{transform: rotate(15deg);}
+    80%{transform: rotate(-15deg);}
+    82%{transform: rotate(-15deg);}
+    85%{transform: rotate(15deg);}
+    87%{transform: rotate(-15deg);}
+    90%{transform: rotate(15deg);}
+}
+
+#premios_img_pkba{
+    width: 20rem;
+    position: absolute;
+    z-index: 4;
+    visibility: hidden;
 }
 
 form{
@@ -74,6 +333,7 @@ form{
     color: #7c3c8b;
     display: block;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 input{
@@ -88,82 +348,265 @@ input{
 }
 
 input:focus{
-    outline-color: #b7b3b8;
-}
-
-.bordeinterior{
-    box-shadow:inset 2px 2px 4px rgba(120, 120, 120, .4), inset -3px -3px 3px rgba(255,255,255,.4);
-}
-
-.submit{
-    background-color: #34a1a1;
-    color: aliceblue;
-    font-size: 18px;
-    letter-spacing: 12px;
-    height: 40px;
-    box-shadow: 4px 7px 10px -6px rgba(0,0,0,0.83);
-    transition: 1.5s;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.submit:hover, .btnextra:hover{
-    background-color: #584183;
-    letter-spacing: 22px;
-    transition: 1.5s;
-}
-
-.btnextra{
-    border-radius: 10px;
-    background-color: #34a1a1;
-    border: none;
-    color: aliceblue;
-    font-size: 18px;
-    letter-spacing: 12px;
-    height: 60px;
-    box-shadow: 4px 7px 10px -6px rgba(0,0,0,0.83);
-    transition: 1.5s;
-    margin: 20px 30px;
-    width: 500px;
-}
-
-.mensajeerror{
-    font-size: 10px;
-    margin: 15px;
-    text-align: center;
-    color: red;
-    opacity: 0%;
-    animation: ani2 1s ease-out 0.75s forwards;
-}
-
-@keyframes ani2{
-    70%{
-        opacity: 1;
-        font-size: 33px;
-    }
-    100%{
-        opacity: 1;
-        font-size: 28px;
-    }
-}
-
-.mensaje{
-    font-size: 10px;
-    margin: 15px;
-    color: #34a1a1;
-    text-align: center;
-    opacity: 0%;
-    animation: ani2 1s ease-out 0.75s forwards;
+    outline-color: #4a70bc;
 }
 
 
-.juegosmain{
+#my-pokemon{
+    height: 100vh;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.pokemon_fondo{
+    height: 100vh;
+    border-right: 0.8rem solid #fe5900;
+}
+
+#pokemon_dropzone{
+    position: relative;
+    width: 46vw;
+    background-color: #fff;
+}
+
+#pokemon_dia_img {
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(8,1fr);
+    justify-items: center;
+    position: absolute;
+    width: 75.9vw;
+    height: 93.8vh;
+    align-items: end;
+    margin-top: 2.8rem;
+    overflow-x:hidden
+}
+
+
+#pokemon_dia_img::-webkit-scrollbar{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+#pokemon_dia_img::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+#pokemon_dia_img::-webkit-scrollbar-thumb{
+    background-color: #F90; 
+    background-image: -webkit-linear-gradient(90deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent)
+}
+
+.pokemon_noche{
+    position: relative;
+}
+
+#pokemon_noche_img {
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(8,1fr);
+    justify-items: center;
+    position: absolute;
+    width: 75.9vw;
+    height: 93.8vh;
+    align-items: end;
+    margin-top: 2.8rem;
+    overflow-x:hidden
+}
+
+#pokemon_noche_img::-webkit-scrollbar{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+#pokemon_noche_img::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+#pokemon_noche_img::-webkit-scrollbar-thumb{
+    background-color: #F90; 
+    background-image: -webkit-linear-gradient(90deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent)
+}
+
+.pokemon_muestra_img{
+    grid-row: 2/8;
+}
+
+#mi_pokemon_card {
+    width: 40vw;
+    height: 75vh;
+    background-color: rgba(255, 0, 0, 0.8);
+    padding: 0rem;
+    position: absolute;
+    z-index: 20;
     display: flex;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    box-shadow: 4px 7px 10px -6px rgba(0,0,0,0.83);
+    visibility: hidden;
 }
 
-.saludoPersonal{
-    text-align: center;
-    font-size: 45px;
+.one_pokemon_card{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 38vw;
+    height: 73vh;
+    position: relative;
+    justify-content: center;
 }
+
+.pokemon_card_principal{
+    width: 14vw;
+    height: 68vh;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    background-color: #fff;
+    border-radius: 1rem;
+    left: 50%;
+}
+
+#pokemon_card_movimientos{
+    width: 24vw;
+    height: 73vh
+}
+
+.pokemon_card_img{
+    height: 20vh;
+    margin: 1rem 2.5rem;
+}
+
+.pokemon_card_descripcion-descripcion{
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0.2rem;
+    border-top: 1px solid #000;
+}
+
+.pokemon_fondos_container_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100vh;
+    width: 75.2vw;
+}
+
+.pokemon_card_ttl{
+    letter-spacing: 1rem;
+    margin: 0;
+    text-align: center;
+    color: rgb(81, 7, 104);
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin: 1rem 0;
+}
+
+#pokemon_card_descripcion_container_tipo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    height: 0.3rem;
+    background-color: #000;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    border: 2px solid #000;
+    margin: 1rem 3rem;
+}
+
+
+#pokemon_card_descripcion-tipo{
+    letter-spacing: 0.5rem;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.pokemon_card_descripcion--ttl{
+    letter-spacing: 1.2rem;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.pokemon_card_movimientos_ttl{
+    display: flex;
+    justify-content: center;
+
+}
+
+.pokemon_card_movimiento{
+    background-color: #ffffff;
+    width: 21vw;
+    border-radius: 1rem;
+    margin: .5rem 1.3rem;
+    padding: 0.5rem;
+    transition: .5s;
+}
+
+.pokemon_card_descripcion{
+    margin: 0;
+}
+
+
+#pokemon_dropzone_info{
+    display: flex;
+    justify-content: center;
+    background-color: #4a70bc;
+    width: 23vw;
+    height: 60vh;
+    margin-right: 1rem;
+    margin-top: 3rem;
+}
+
+
+#pokemon_dropzone_info_cambioHora{
+    width: 10vw;
+    height: 25vh;
+    border-radius: 1rem;
+    background-color: #c5e7e7;
+    position: absolute;
+    margin-right: 20rem;
+    margin: 1rem;
+}
+
+.pokemon_dropzone_info_cambioHora-txt{
+    font-size: 1rem;
+    padding: 0 1rem;
+    text-align: justify;
+}
+
+#pokemon_dropzone_info_cambioHora_btncontainer{
+    width: 4vw;
+    height: 2.5vh;
+    border-radius: 2rem;
+    background-color: rgb(189, 198, 19);
+    margin: 0 2.5rem;
+    transition: 1.5s;
+    border: 5px solid rgb(189, 198, 19);
+    display: flex;
+}
+
+.pokemon_dropzone_info_cambioHora_btncontainer-circulo{
+    width: 1.25vw;
+    height: 2.5vh;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.pokemon_dropzone_info_cambioHora_btncontainer-cambio{
+    background-color: rgb(55, 43, 133) !important;
+    border: 5px solid rgb(55, 43, 133) !important;
+    justify-content: end;
+}
+
+
+#pokemon_fondo_dia_noche{
+    transition: 2s;
+}
+
+.pokemon_horario_cambio{
+    transform: translateY(-100.5vh);
+}
+

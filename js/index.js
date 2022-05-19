@@ -1,3 +1,39 @@
+setTimeout(()=>{
+    let divHidden = document.getElementById("hero_video_texto")
+    divHidden.style.visibility = "visible"
+},12500)
+
+window.addEventListener("scroll", ()=>{
+    let ubicacion = document.getElementById("gacha_profesor_txt")
+    let progreso = ()=>{
+        let scroll = document.documentElement.scrollTop;
+        let heigh = document.documentElement.scrollHeight - document.documentElement.clientHeight
+
+        let progreso = (scroll/heigh)*100
+        return progreso
+    }
+
+
+    if(progreso() > 32 && progreso() < 58){
+        ubicacion.style.animation = "movertxt 15s alternate infinite"
+    }else{
+        ubicacion.style.animation = ""
+    }
+    
+} )
+
+let visibilidad = (id, visibilidad)=>{
+    let conteiner = document.getElementById(id)
+    conteiner.style.visibility = visibilidad
+}
+
+let premiosC = document.getElementById("premios_container");
+premiosC.onclick = ()=>{
+    premiosC.style.visibility = "hidden"
+    pokeAbierta.style.visibility = "hidden"
+    location.reload()
+}
+
 let solicitarPago = (e) =>{
     e.preventDefault();
     let formulario = e.target
@@ -8,33 +44,70 @@ let solicitarPago = (e) =>{
         jugadasInicial = dinero / 3; 
         totalDeJugadas += jugadasInicial
         JSON.stringify(localStorage.setItem('Jugadas', totalDeJugadas))
-        acumulador = JSON.parse(localStorage.getItem('Jugadas'))
-        document.getElementById('cantidad').innerHTML = `Tienes un total de ${acumulador} jugadas`;
+        document.getElementById('gacha_img_pikachu2').style.visibility = 'hidden'
+        document.getElementById('gacha_img_pikachu1').style.visibility = 'visible'
+        document.getElementById('gacha_function_error').innerHTML = ``;
+        document.getElementById('gacha_function_play').innerHTML = `Tienes un total de <span class="premios_txt-nombre">${totalDeJugadas}</span> jugadas`;
     }else{
-        document.getElementById('cantidad').innerHTML = 'Dinero insuficiente, ingrese mas dinero';
+        document.getElementById('gacha_img_pikachu1').style.visibility = 'hidden'
+        document.getElementById('gacha_img_pikachu2').style.visibility = 'visible'
+        document.getElementById('gacha_function_error').innerHTML = `<p class="premios_txt premios_txt-error">Dinero insuficiente, ingrese mas dinero</p>`;
     }
 }
 
 let gacha = (e) => {
     e.preventDefault();
-    if(1 <= acumulador) {
+    document.getElementById('gacha_function_img_img-2').style.visibility = 'hidden'
+    if(1 <= totalDeJugadas) {
+        document.getElementById('gacha_function_error').innerHTML = ``;
         mostrarPremio()
-        acumulador = acumulador -1
-        document.getElementById('cantidad').innerHTML = `Tienes un total de ${acumulador} jugadas`;
+        totalDeJugadas -= 1
+        
+        document.getElementById('gacha_function_img_img-2').style.visibility = 'visible'
+        setTimeout(() => {
+            document.getElementById('gacha_function_img_img-2').style.visibility = 'hidden'
+        }, 200);
+        document.getElementById('gacha_img_pikachu2').style.visibility = 'hidden'
+        document.getElementById('gacha_img_pikachu1').style.visibility = 'visible'
+        document.getElementById('gacha_function_play').innerHTML = `Tienes un total de <span class="premios_txt-nombre">${totalDeJugadas}</span> jugadas`;
+        
     }else{
-        document.getElementById('premios').innerHTML = `No ingresaste dinero para realizar una jugada`;
+        document.getElementById('gacha_function_img_img-2').style.visibility = 'visible'
+        setTimeout(() => {
+            document.getElementById('gacha_function_img_img-2').style.visibility = 'hidden'
+        }, 200);
+        document.getElementById('gacha_img_pikachu1').style.visibility = 'hidden'
+        document.getElementById('gacha_img_pikachu2').style.visibility = 'visible'
+        document.getElementById('premios_container').style.visibility = 'hidden';
+        document.getElementById('gacha_function_error').innerHTML = `<p class="premios_txt premios_txt-error">No tienes jugadas! Ingresa dinero para tener jugadas.</p>`;
+
     }
-    JSON.stringify(localStorage.setItem('Jugadas', acumulador))
+    JSON.stringify(localStorage.setItem('Jugadas', totalDeJugadas))
+    
 }
 
-let mostrarPremio = () =>{ 
-    allPrizes.forEach((e) => { 
-        document.getElementById('premios').innerHTML = `${e.probabilidad()}`
-    })
+let mostrarPremio = () =>{
+    let premioConteiner = document.getElementById('premios_container')
+    premioConteiner.style.visibility = "visible"
+    let premio = document.getElementById('premios')
+    premio.innerHTML = ""
+    
+    pokeCerrada.style.visibility =  "visible"
+    pokeCerrada.style.animation =  "pkbc 5s infinite"
+    setTimeout(() => {
+        probabilidad()
+}, 4300)
+
+    setTimeout(() => {
+        pokeCerrada.style.visibility = "hidden"
+        pokeAbierta.style.visibility = "visible"
+}, 5000)
+
 };
 
+let pokeCerrada = document.getElementById("premios_img_pkbc")
+let pokeAbierta = document.getElementById("premios_img_pkba")
 
-let totalDeJugadas = 0;
+let totalDeJugadas = JSON.parse(localStorage.getItem('Jugadas'));;
 let jugadasInicial = 0;
 let dinero = 0;
-let acumulador = 0;

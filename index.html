@@ -6,28 +6,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=VT323&display=swap" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet" type="text/css">
-    <title>GASHAGACHA</title>
+    <title>POKE-GACHA</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#"><img src="img/bolso.png"></a>
-            <a href="#"><img src="img/buscador.png"></a>
-            
+    <header class="header">
+        <nav id="nav__container">
+            <div class="nav__container-izquierda">
+                <a href="#" class="nav__txt-ttl">POKE-GACHA</a>
+            </div>
+            <div class="nav__container-derecha">
+                <a href="#my-pokemon" class="nav__txt">MIS POKEMONS</a>
+                <a href="#gacha" class="nav__txt">PROFESOR OAK</a>
+                <a href="#my-pokemon" class="nav__txt">CRIADERO</a>
+            </div>
         </nav>
     </header>
     <main>
-        <div class="ttl">
-            <h1>GASHA GACHA</h1>
-        </div>
-        <div class="btnclass">
-            <button onclick="option()" class="btn">QUIERO JUGAR</button>
-        </div>
+        <section class="hero">
+            <div class="hero_txt_container">
+                <h1 class="hero_txt_container-ttl">POKE-GACHA</h1>
+                <p class="hero_txt_container-p">ATRAPALOS A TODOS!</p>
+            </div>
+            <div class="hero_video_container">
+                <div id="hero_video_texto">
+                    <a href="#gacha" class="hero_video_texto_p"><p >- JUGAR</p></a>
+                </div>
+                <video src="img/intro3.mp4" class="hero_video_video" autoplay controls muted></video>
+            </div>
+        </section>
+
+        <section id="gacha" class="gacha_container">
+            <div class="premios_container" id="premios_container">
+                <img id="premios_img_pkbc" src="img/pokeballcerrada.png" alt="">
+                <img id="premios_img_pkba" src="img/pokeballabierta.png" alt="">
+                <div id="premios">
+                    
+                </div>
+            </div>
+            <div class="gacha_profesor">
+                <img src="img/profesor1.png" alt="Profesor Oak" class="gacha_profesor_img">
+                <div class="gacha_profesor_container_txt">
+                    <p  id="gacha_profesor_txt">Hola Entrenador! Soy el Profesor Oak, para poder iniciar el viaje en el mundo Pokemon
+                        tienes que ingresar un monto de 3 o multiplo de 3 para poder realizar una jugada y ganarte un Pokemon!<br><br>
+                        A la carga!
+                    </p>
+                </div>
+            </div>
+            <div class="gacha_container_function">
+                <div class="gacha_function_txt_container">
+                    <div id="gacha_function_money">
+                        <p> Una jugada: $3.</p> <p id="gacha_function_play"></p>
+                    </div>
+                    <div class="gacha_function_error_container">
+                            <div id="gacha_function_error"></div>
+                    </div>
+                </div>
+                <form id="pago">
+                    <input type="number" placeholder="Ingresa dinero"><br>
+                    <input type="submit" >
+                </form>
+                <div class="gacha_function_img">
+                    <div class="gacha_function_img-pikachus">
+                        <img id= "gacha_img_pikachu1" class="gacha_img_pikachu" src="img/pikachu1.png">
+                        <img id= "gacha_img_pikachu2" class="gacha_img_pikachu" src="img/pikachu2.png" >
+                        <img id= "gacha_function_img_img-2" src="img/maquina5.png" usemap="#Map">
+                    </div>
+                    <img class= "gacha_function_img_img" src="img/maquina3.png" usemap="#Map">
+                    
+                    <map name="Map" id="Map">
+                        <area id="mapero"  alt="click" title="click" href="" shape="circle" coords="168, 368, 46"  >
+                    </map>
+                </div>
+            </div>
+        </section>
+
+        <section id="my-pokemon">
+            <div class="pokemon_fondos_container">
+                <div class="pokemon_fondos_container_card">
+                    <div id="mi_pokemon_card"></div>
+                </div>
+                
+                <div id="pokemon_fondo_dia_noche">
+                    <div class="pokemon_dia">
+                        <div id="pokemon_dia_img"></div>
+                        <img id="pokemon_fondos-dia" class="pokemon_fondo" src="img/bck-dia.png" alt="">
+                    </div>
+                    <div class="pokemon_noche">
+                        <div id="pokemon_noche_img"></div>
+                        <img id="pokemon_fondos-noche" class="pokemon_fondo" src="img/bck-noche.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <aside draggable="true" id="pokemon_dropzone">
+                <div id="pokemon_dropzone_info">
+                    <h3>Pon aqui a tus Pokemon<br> y llevalos a todos lados!</h3>
+                </div>
+                <div id="pokemon_dropzone_info_cambioHora">
+                    <p class="pokemon_dropzone_info_cambioHora-txt">Sabias que algunos Pokemon unicamente aparecen de noche?<br><br>
+                    Toca el boton para ver a tus Pokemons de dia o de noche!</p>
+                    <div id="pokemon_dropzone_info_cambioHora_btncontainer">
+                        <div class="pokemon_dropzone_info_cambioHora_btncontainer-circulo"></div>
+                    </div>
+                </div>
+                <img src="img/profesor3.png" alt="Profesor Oak">
+            </aside>
+        </section>
+
     </main>
-    <script src="js/registro.js"></script>
-     <script src="js/index.js"></script>
+    <script src="js/mostrar-pokes.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/array.js"></script>
     <script src="js/dom.js"></script> 
 </body>
