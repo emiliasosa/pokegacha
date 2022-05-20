@@ -365,7 +365,7 @@ input:focus{
     border-right: 0.8rem solid #fe5900;
 }
 
-#pokemon_dropzone{
+.pokemon_aside{
     position: relative;
     width: 46vw;
     background-color: #fff;
@@ -436,7 +436,7 @@ input:focus{
 
 #mi_pokemon_card {
     width: 40vw;
-    height: 75vh;
+    height: 82vh;
     background-color: rgba(255, 0, 0, 0.8);
     padding: 0rem;
     position: absolute;
@@ -448,19 +448,22 @@ input:focus{
     visibility: hidden;
 }
 
-.one_pokemon_card{
+#one_pokemon_card{
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 38vw;
-    height: 73vh;
+    height: 82vh;
     position: relative;
     justify-content: center;
 }
 
 .pokemon_card_principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 14vw;
-    height: 68vh;
+    height: 74vh;
     border-right: 2px solid #000;
     border-bottom: 2px solid #000;
     background-color: #fff;
@@ -470,12 +473,12 @@ input:focus{
 
 #pokemon_card_movimientos{
     width: 24vw;
-    height: 73vh
+    height: 76vh
 }
 
 .pokemon_card_img{
-    height: 20vh;
-    margin: 1rem 2.5rem;
+    height: 18vh;
+    margin: 1rem 0rem;
 }
 
 .pokemon_card_descripcion-descripcion{
@@ -501,7 +504,6 @@ input:focus{
     color: rgb(81, 7, 104);
     font-size: 1.5rem;
     font-weight: 100;
-    margin: 1rem 0;
 }
 
 #pokemon_card_descripcion_container_tipo{
@@ -533,7 +535,6 @@ input:focus{
 .pokemon_card_movimientos_ttl{
     display: flex;
     justify-content: center;
-
 }
 
 .pokemon_card_movimiento{
@@ -550,18 +551,52 @@ input:focus{
 }
 
 
-#pokemon_dropzone_info{
-    display: flex;
-    justify-content: center;
-    background-color: #4a70bc;
+.pokemon_dropzone_info_container{
+    text-align: center;
     width: 23vw;
     height: 60vh;
     margin-right: 1rem;
     margin-top: 3rem;
 }
 
+#pokemon_dropzone{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: 0;
+    margin: 1rem;
+    width: 21vw;
+    height: 50vh;
+}
 
-#pokemon_dropzone_info_cambioHora{
+.pokemon_drag_img{
+    object-fit: scale-down;
+    margin: 1rem;
+}
+
+#pokemon_tacho_div{
+    width: 5vw;
+    height: 12vh;
+    position: absolute;
+    z-index: 100;
+    bottom: 50%;
+    right: .8rem;
+    transition: 2s;
+}
+
+.pokemon_tacho_div{
+    bottom: 0  !important;
+}
+
+.pokemon_tacho_img{
+    width: 5vw;
+}
+
+.pokemon_dia{
+    position: relative;
+}
+
+#pokemon_aside_info_cambioHora{
     width: 10vw;
     height: 25vh;
     border-radius: 1rem;
@@ -571,13 +606,13 @@ input:focus{
     margin: 1rem;
 }
 
-.pokemon_dropzone_info_cambioHora-txt{
+.pokemon_aside_info_cambioHora-txt{
     font-size: 1rem;
     padding: 0 1rem;
     text-align: justify;
 }
 
-#pokemon_dropzone_info_cambioHora_btncontainer{
+#pokemon_aside_info_cambioHora_btncontainer{
     width: 4vw;
     height: 2.5vh;
     border-radius: 2rem;
@@ -588,14 +623,14 @@ input:focus{
     display: flex;
 }
 
-.pokemon_dropzone_info_cambioHora_btncontainer-circulo{
+.pokemon_aside_info_cambioHora_btncontainer-circulo{
     width: 1.25vw;
     height: 2.5vh;
     border-radius: 50%;
     background-color: #fff;
 }
 
-.pokemon_dropzone_info_cambioHora_btncontainer-cambio{
+.pokemon_aside_info_cambioHora_btncontainer-cambio{
     background-color: rgb(55, 43, 133) !important;
     border: 5px solid rgb(55, 43, 133) !important;
     justify-content: end;
@@ -603,6 +638,7 @@ input:focus{
 
 
 #pokemon_fondo_dia_noche{
+    position: relative;
     transition: 2s;
 }
 
@@ -610,3 +646,35 @@ input:focus{
     transform: translateY(-100.5vh);
 }
 
+#pokemon_card_evoluciones{
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+}
+
+.pokemon_card_evolucion_container{
+    position: absolute;
+    bottom: 0;
+}
+.pokemon_liberado_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 90vh;
+    width: 60vw;
+}
+
+.pokemon_modal_liberar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 101;
+    height: 5vh;
+    font-size: 2rem;
+    background-color: rgb(171, 243, 208);
+    color: rgb(255, 18, 18);
+    border: 1rem solid rgb(171, 243, 208);
+    box-shadow: 4px 7px 10px -6px rgba(0,0,0,0.83);
+}

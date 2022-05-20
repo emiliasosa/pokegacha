@@ -33,7 +33,7 @@
                 <div id="hero_video_texto">
                     <a href="#gacha" class="hero_video_texto_p"><p >- JUGAR</p></a>
                 </div>
-                <video src="img/intro3.mp4" class="hero_video_video" autoplay controls muted></video>
+                <video src="img/intro.mp4" class="hero_video_video" autoplay controls muted></video>
             </div>
         </section>
 
@@ -71,9 +71,9 @@
                     <div class="gacha_function_img-pikachus">
                         <img id= "gacha_img_pikachu1" class="gacha_img_pikachu" src="img/pikachu1.png">
                         <img id= "gacha_img_pikachu2" class="gacha_img_pikachu" src="img/pikachu2.png" >
-                        <img id= "gacha_function_img_img-2" src="img/maquina5.png" usemap="#Map">
+                        <img id= "gacha_function_img_img-2" src="img/maquina2.png" usemap="#Map">
                     </div>
-                    <img class= "gacha_function_img_img" src="img/maquina3.png" usemap="#Map">
+                    <img class= "gacha_function_img_img" src="img/maquina1.png" usemap="#Map">
                     
                     <map name="Map" id="Map">
                         <area id="mapero"  alt="click" title="click" href="" shape="circle" coords="168, 368, 46"  >
@@ -87,8 +87,14 @@
                 <div class="pokemon_fondos_container_card">
                     <div id="mi_pokemon_card"></div>
                 </div>
+                <div class="pokemon_liberado_card ">
+                    <div id="pokemon_liberado_card"></div>
+                </div>
                 
                 <div id="pokemon_fondo_dia_noche">
+                    <div id="pokemon_tacho_div">
+                        <img class="pokemon_tacho_img" src="./img/tacho.png" alt="Tacho de basura" >
+                    </div>
                     <div class="pokemon_dia">
                         <div id="pokemon_dia_img"></div>
                         <img id="pokemon_fondos-dia" class="pokemon_fondo" src="img/bck-dia.png" alt="">
@@ -99,26 +105,26 @@
                     </div>
                 </div>
             </div>
-            <aside draggable="true" id="pokemon_dropzone">
-                <div id="pokemon_dropzone_info">
+            <aside  class="pokemon_aside">
+                <div class="pokemon_dropzone_info_container">
                     <h3>Pon aqui a tus Pokemon<br> y llevalos a todos lados!</h3>
+                    <div id="pokemon_dropzone"></div>
                 </div>
-                <div id="pokemon_dropzone_info_cambioHora">
-                    <p class="pokemon_dropzone_info_cambioHora-txt">Sabias que algunos Pokemon unicamente aparecen de noche?<br><br>
+                <div id="pokemon_aside_info_cambioHora">
+                    <p class="pokemon_aside_info_cambioHora-txt">Sabias que algunos Pokemon unicamente aparecen de noche?<br><br>
                     Toca el boton para ver a tus Pokemons de dia o de noche!</p>
-                    <div id="pokemon_dropzone_info_cambioHora_btncontainer">
-                        <div class="pokemon_dropzone_info_cambioHora_btncontainer-circulo"></div>
+                    <div id="pokemon_aside_info_cambioHora_btncontainer">
+                        <div class="pokemon_aside_info_cambioHora_btncontainer-circulo"></div>
                     </div>
                 </div>
-                <img src="img/profesor3.png" alt="Profesor Oak">
+                <img src="img/profesor2.png" alt="Profesor Oak">
             </aside>
         </section>
 
     </main>
+    <script src="js/dragdrop.js"></script>
     <script src="js/mostrar-pokes.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/array.js"></script>
-    <script src="js/dom.js"></script> 
+    <script src="./index.js" type="module"></script>
 </body>
 </html>
 

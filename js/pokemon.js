@@ -1,62 +1,4 @@
-class Prize{
-    constructor(data){
-        this.id = data.id
-        this.nombre = data.nombre
-        this.img = data.img
-        this.articulo = data.articulo
-        this.cantidad = data.cantidad
-        this.categoria = data.categoria
-    }
-
-
-    probabilidad(){    
-        let idVer = () =>{
-            let num = 0;
-            let random = Math.floor(Math.random()*100+1);
-            
-            if(random < 5) {
-                num = 1;
-            } else if (random < 20 ) {
-                num = 2;
-            } else if (random < 40) {
-                num = 3;
-            } else if (random < 60) {
-                num = 4;
-            } else {
-                num = 5;  
-            }
-                return num;
-        }
-
-        let ver = idVer()
-        console.log(ver)
-        //let idItem = allPrizes.find((item) => item.id == ver)
-
-        const requestInfo = async ()=>{
-            const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${ver}`)
-            const conversion = await result.json()
-            let contador = 0;
-            
-            let obj = conversion.sprites.versions
-            let arr = Object.keys(obj).map(function (key) {return [String(key), obj[key]];});
-        
-            let sprite = arr[4][1]
-        
-            let ultrafiltrado = Object.keys(sprite).map(function (key) {return [String(key), sprite[key]];});
-            console.log(conversion.name)
-            console.log(ultrafiltrado[0][1].animated.front_default)
-
-            return `Felicidades, te ganaste ${conversion.name} <img src=" ${ultrafiltrado[0][1].animated.front_default}" > !! `
-        }
-        console.log(requestInfo())
-        return requestInfo()
-    }
-}
-
-
-
-
-const probabilidad = async()=>{   
+const obtenerPokemon = async()=>{   
     let ver = Math.floor(Math.random()*649+1)
     let descriptionFinal;
 
@@ -73,8 +15,8 @@ const probabilidad = async()=>{
 
     if(conversionEvolution.chain.evolves_to.length != 0){
         if(conversionEvolution.chain.evolves_to[0].evolves_to.length != 0 ){
-            conversionEvolution.chain.species.name, conversionEvolution.chain.evolves_to[0].species.name,
-                            conversionEvolution.chain.evolves_to[0].evolves_to[0].species.name
+            evoluciones.push(conversionEvolution.chain.species.name, conversionEvolution.chain.evolves_to[0].species.name,
+                            conversionEvolution.chain.evolves_to[0].evolves_to[0].species.name)
         }else if(conversionEvolution.chain.evolves_to.length != 0){
             evoluciones.push(conversionEvolution.chain.species.name, conversionEvolution.chain.evolves_to[0].species.name)
         }
@@ -185,3 +127,6 @@ const probabilidad = async()=>{
     <img  class="premios_img" src="${ultrisimisFiltradisimis}"> </div>  `
     
 }
+
+export {obtenerPokemon}
+

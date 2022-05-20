@@ -1,11 +1,13 @@
 let localStoragePokemon = JSON.parse(localStorage.getItem('Pokemon'))
 
 
-let container = document.getElementById("pokemon_dropzone_info_cambioHora_btncontainer")
+let container = document.getElementById("pokemon_aside_info_cambioHora_btncontainer")
 container.addEventListener('click', ()=>{
     let moverFondos = document.getElementById("pokemon_fondo_dia_noche")
     moverFondos.classList.toggle("pokemon_horario_cambio")
-    container.classList.toggle("pokemon_dropzone_info_cambioHora_btncontainer-cambio")
+    let moverTacho = document.getElementById("pokemon_tacho_div")
+    moverTacho.classList.toggle("pokemon_tacho_div")
+    container.classList.toggle("pokemon_aside_info_cambioHora_btncontainer-cambio")
     cardCerrar.style.visibility = "hidden"
 })
 
@@ -38,101 +40,112 @@ let coloresPorTipo = (tipo)=>{
     }
 }
 
-let agregarAlDom = (id)=>{
-    let pokemonsContainer = document.getElementById(id)
-    let div = document.createElement("div");                      
-    div.innerHTML= `<img  class="pokemon_muestra_img" src="${i.imagen}" onclick="cardOnePokemon(${i.id})"> `                                            
+
+let agregarAlDom = (idContainer, id)=>{
+    let pokemonsContainer = document.getElementById(idContainer)
+    let div = document.createElement("div");
+    div.id = "element-"+id                   
+    div.innerHTML= `<img  class="pokemon_drag_img" src="${i.imagen}" onclick="cardOnePokemon(${i.id})" id="${i.id}"> `                                          
     pokemonsContainer.appendChild(div); 
+
+    eventoDraggable(div)
+
 }
 
-let colocarEvolucion = (opcion)=>{
-    for(j of opcion){
-        `<img  class="pokemon_card_img" src="${i.evoluciones[j].imagen_evolucion}")>`
-    }
+let colocarEvolucion = ()=>{
+    const evo = document.getElementById("pokemon_card_evoluciones")
+    i.evoluciones.forEach(e => {
+        evo.insertAdjacentHTML(
+            "beforeend",`<img class="pokemon_card_evoluciones_img" src="${e.imagen_evolucion}")>`)
+    });
 }
 
-
+let colocarMovimientos = ()=>{
+    const evo = document.getElementById("pokemon_card_movimientos_container")
+    i.movimientos.forEach(e => {
+        evo.insertAdjacentHTML(
+            "beforeend",`
+            <div class="pokemon_card_movimiento">
+                <p class="pokemon_card_descripcion">${e.nombre} :</p>
+                <p class="pokemon_card_descripcion">${e.efecto}</p>
+            </div>`)
+    });
+}
 
 
 let cardOnePokemon = (id)=>{
-    cardCerrar.style.visibility = "visible"
-    
     for(i of localStoragePokemon){
         if(i.id == id){
             let nombreUpperCase = i.nombre.toUpperCase()
             let tipoUpperCase = i.tipo.toUpperCase()
         
-            
-
             let container = document.getElementById("mi_pokemon_card")
+            container.style.visibility = "visible"
+            let cardCerrar = document.getElementById('mi_pokemon_card');
+            cardCerrar.style.opacity = "1"
+            cardCerrar.style.transition = "1s"
             container.innerHTML = `
-            <div class="one_pokemon_card">
-                <div class="pokemon_card_principal">
-                    <h3 class="pokemon_card_ttl">${nombreUpperCase}</h3>
-                    <img  class="pokemon_card_img" src="${i.imagen_card}")>
-                    <div id="pokemon_card_descripcion_container_tipo">
-                         <p id="pokemon_card_descripcion-tipo"> ${tipoUpperCase}</p>
+                <div id="one_pokemon_card">
+                    <div class="pokemon_card_principal">
+                        <h3 class="pokemon_card_ttl">${nombreUpperCase}</h3>
+                        <img  class="pokemon_card_img" src="${i.imagen_card}")>
+                        <div id="pokemon_card_descripcion_container_tipo">
+                            <p id="pokemon_card_descripcion-tipo"> ${tipoUpperCase}</p>
+                        </div>
+                        <p class="pokemon_card_descripcion-descripcion">Peso: ${i.peso} gramos</p>
+                        <p class="pokemon_card_descripcion-descripcion">${i.descripcion}</h3>
                     </div>
-                    <p class="pokemon_card_descripcion-descripcion">Peso: ${i.peso} gramos</p>
-                    <p class="pokemon_card_descripcion-descripcion">${i.descripcion}</h3>
-                </div>
-               
-                <div id="pokemon_card_movimientos">
-                    <div class="pokemon_card_movimiento pokemon_card_movimientos_ttl">
-                        <p class="pokemon_card_descripcion--ttl ">MOVIMIENTOS</p>
-                    </div>
-                    
-                    <div class="pokemon_card_movimiento">
-                        <p class="pokemon_card_descripcion">${i.movimientos[0].nombre} :</p>
-                        <p class="pokemon_card_descripcion">${i.movimientos[0].efecto}</p>
-                    </div>
-                    <div class="pokemon_card_movimiento">
-                        <p class="pokemon_card_descripcion">${i.movimientos[1].nombre} :</p>
-                        <p class="pokemon_card_descripcion">${i.movimientos[1].efecto}</p>
-                    </div>
-                    <div class="pokemon_card_movimiento">
-                        <p class="pokemon_card_descripcion">${i.movimientos[2].nombre} :</p>
-                        <p class="pokemon_card_descripcion">${i.movimientos[2].efecto}</p>
-                    </div>
-                    <div class="pokemon_card_movimiento">
-                        <p class="pokemon_card_descripcion">${i.movimientos[3].nombre} :</p>
-                        <p class="pokemon_card_descripcion">${i.movimientos[3].efecto}</p>
-                    </div>
-                    <div class="pokemon_card_movimiento">
-                        <p class="pokemon_card_descripcion">${i.movimientos[4].nombre} :</p>
-                        <p class="pokemon_card_descripcion">${i.movimientos[4].efecto}</p>
-                    </div>
+                
+                    <div id="pokemon_card_movimientos">
+                        <div class="pokemon_card_movimiento pokemon_card_movimientos_ttl">
+                            <p class="pokemon_card_descripcion--ttl ">MOVIMIENTOS</p>
+                        </div>
+                        
+                        <div id="pokemon_card_movimientos_container">
+                        </div>
 
-                    
-                    <div class="pokemon_card_movimiento pokemon_card_movimientos_ttl">
-                        <p class="pokemon_card_descripcion--ttl ">EVOLUCIONES</p>
-                    </div>
-                    <div id="pokemon_card_evoluciones">
-                        <img  class="pokemon_card_img" src="${i.evoluciones[0].imagen_evolucion}")>
-                        <img  class="pokemon_card_img" src="${i.evoluciones[1].imagen_evolucion}")>
+                        <div class="pokemon_card_evolucion_container">
+                            <div class="pokemon_card_movimiento pokemon_card_movimientos_ttl">
+                                <p class="pokemon_card_descripcion--ttl ">EVOLUCIONES</p>
+                            </div>
+                            <div id="pokemon_card_evoluciones">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             `
             coloresPorTipo(i.tipo)
+            colocarEvolucion()
+            colocarMovimientos()
         }
     }
-    
+ 
 }
 
 let colocarPokemon = ()=>{
+    let id = 0;
     for(i of localStoragePokemon){
+        
         if(i.tipo.includes("dark") || i.tipo.includes("ghost") || i.tipo.includes("poison") || i.tipo.includes("dragon")){
-            agregarAlDom("pokemon_noche_img")
+            agregarAlDom("pokemon_noche_img", id)
         }else{
-            agregarAlDom("pokemon_dia_img")
+            agregarAlDom("pokemon_dia_img", id)
         }
+        id ++
     }
 }
 
-colocarPokemon()
+let cerrarCard = () =>{
+    let container = document.getElementById('mi_pokemon_card');
+    container.addEventListener('click', ()=>{
+        let containerCard = document.getElementById('mi_pokemon_card');
+        containerCard.style.opacity = "0"
+        containerCard.style.transition = "1s"
+        containerCard.style.visibility = "hidden"
+        
+    })
+}
 
-let cardCerrar = document.getElementById('mi_pokemon_card');
-cardCerrar.addEventListener('click', ()=>{
-    cardCerrar.style.visibility = "hidden"
-})
+colocarPokemon()
+cerrarCard()
+
